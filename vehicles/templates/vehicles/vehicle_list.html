@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Vehicle List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Vehicle Number</th>
+                <th>Driver Name</th>
+                <th>Model</th>
+                <th>Capacity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.vehicle_number }}</td>
+                <td>{{ vehicle.driver_name }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td>{{ vehicle.capacity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'vehicle_add' %}">Add New Vehicle</a>
+</body>
+</html>
