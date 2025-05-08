@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Parcel List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Shipping Label</th>
+                <th>Customer</th>
+                <th>Vehicle</th>
+                <th>Driver</th>
+                <th>Shipped Date</th>
+                <th>Delivered</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for parcel in parcels %}
+            <tr>
+                <td>{{ parcel.product.name }}</td>
+                <td>{{ parcel.shipping_label.label }}</td>
+                <td>{{ parcel.customer.username }}</td>
+                <td>{{ parcel.vehicle.vehicle_number }}</td>
+                <td>{{ parcel.driver.name }}</td>
+                <td>{{ parcel.shipped_date }}</td>
+                <td>{{ parcel.delivered }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'parcel_add' %}">Add New Parcel</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Notification List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Title</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for notification in notifications %}
+            <tr>
+                <td>{{ notification.user.username }}</td>
+                <td>{{ notification.title }}</td>
+                <td>{{ notification.message }}</td>
+                <td>{{ notification.is_read }}</td>
+                <td>{{ notification.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'notification_add' %}">Add New Notification</a>
+</body>
+</html>
